@@ -260,10 +260,6 @@
     name: RadzenCompareValidator
   - uid: Radzen.Blazor.RadzenEmailValidator
     name: RadzenEmailValidator
-  - uid: Radzen.Blazor.RadzenHtmlEditorButtonBase
-    name: RadzenHtmlEditorButtonBase
-  - uid: Radzen.Blazor.RadzenHtmlEditorColorBase
-    name: RadzenHtmlEditorColorBase
   - uid: Radzen.Blazor.RadzenLabel
     name: RadzenLabel
   - uid: Radzen.Blazor.RadzenLengthValidator
@@ -287,30 +283,3 @@
     name: TickTemplateContext
   - uid: Radzen.Blazor.ValidatorBase
     name: ValidatorBase
-- uid: Radzen.Blazor.Rendering
-  name: Radzen.Blazor.Rendering
-  items:
-  - uid: Radzen.Blazor.Rendering.AxisMeasurer
-    name: AxisMeasurer
-  - uid: Radzen.Blazor.Rendering.ClassList
-    name: ClassList
-  - uid: Radzen.Blazor.Rendering.DateTimeExtensions
-    name: DateTimeExtensions
-  - uid: Radzen.Blazor.Rendering.DraggableEventArgs
-    name: DraggableEventArgs
-  - uid: Radzen.Blazor.Rendering.HSV
-    name: HSV
-  - uid: Radzen.Blazor.Rendering.IPathGenerator
-    name: IPathGenerator
-  - uid: Radzen.Blazor.Rendering.LineGenerator
-    name: LineGenerator
-  - uid: Radzen.Blazor.Rendering.NumericExtensions
-    name: NumericExtensions
-  - uid: Radzen.Blazor.Rendering.Polar
-    name: Polar
-  - uid: Radzen.Blazor.Rendering.Rect
-    name: Rect
-  - uid: Radzen.Blazor.Rendering.RGB
-    name: RGB
-  - uid: Radzen.Blazor.Rendering.SplineGenerator
-    name: SplineGenerator
