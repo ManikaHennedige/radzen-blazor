@@ -22,6 +22,8 @@ $paginator-next-button-color: $white !default;
 $paginator-dropdown-width: 80px !default;
 $paginator-dropdown-margin: $paginator-last-button-margin !default;
 
+$paginator-button-size: ".rz-button-sm" !default;
+
 .rz-paginator {
   display: flex;
   align-items: center;
@@ -80,7 +82,7 @@ $paginator-dropdown-margin: $paginator-last-button-margin !default;
 }
 
 .rz-paginator-element {
-  @extend .rz-button, .rz-button-sm, .rz-button-icon-only;
+  @extend .rz-button, #{$paginator-button-size}, .rz-button-icon-only;
 }
 
 .rz-paginator-first {
