@@ -45,7 +45,7 @@
     [Parameter]
     public bool Disabled { get; set; }
 
-    ClassList ClassList => ClassList.Create("rz-state-active")
+    ClassList ClassList => ClassList.Create("rz-tabview-item")
                                     .Add("rz-tabview-selected", IsSelected)
                                     .AddDisabled(Disabled)
                                     .Add(Attributes);
