@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 namespace Radzen.Blazor
 {
     /// <summary>
-    /// Class RadzenDatePicker.
+    /// RadzenDatePicker component.
     /// Implements the <see cref="Radzen.RadzenComponent" />
     /// Implements the <see cref="Radzen.IRadzenFormComponent" />
     /// </summary>
@@ -22,18 +22,9 @@ namespace Radzen.Blazor
     /// <seealso cref="Radzen.IRadzenFormComponent" />
     public partial class RadzenDatePicker<TValue> : RadzenComponent, IRadzenFormComponent
     {
-        /// <summary>
-        /// The month drop down
-        /// </summary>
         RadzenDropDown<int> monthDropDown;
-        /// <summary>
-        /// The year drop down
-        /// </summary>
         RadzenDropDown<int> yearDropDown;
 
-        /// <summary>
-        /// Ams to pm.
-        /// </summary>
         async Task AmToPm()
         {
             if (amPm == "am" && !Disabled)
@@ -58,9 +49,6 @@ namespace Radzen.Blazor
             }
         }
 
-        /// <summary>
-        /// Pms to am.
-        /// </summary>
         async Task PmToAm()
         {
             if (amPm == "pm" && !Disabled)
@@ -85,14 +73,8 @@ namespace Radzen.Blazor
             }
         }
 
-        /// <summary>
-        /// The hour
-        /// </summary>
         int? hour;
-        /// <summary>
-        /// Handles the <see cref="E:UpdateHourInput" /> event.
-        /// </summary>
-        /// <param name="args">The <see cref="ChangeEventArgs"/> instance containing the event data.</param>
+
         void OnUpdateHourInput(ChangeEventArgs args)
         {
             var value = $"{args.Value}";
@@ -102,14 +84,9 @@ namespace Radzen.Blazor
             }
         }
 
-        /// <summary>
-        /// The minutes
-        /// </summary>
+
         int? minutes;
-        /// <summary>
-        /// Handles the <see cref="E:UpdateHourMinutes" /> event.
-        /// </summary>
-        /// <param name="args">The <see cref="ChangeEventArgs"/> instance containing the event data.</param>
+
         void OnUpdateHourMinutes(ChangeEventArgs args)
         {
             var value = $"{args.Value}";
@@ -119,14 +96,8 @@ namespace Radzen.Blazor
             }
         }
 
-        /// <summary>
-        /// The seconds
-        /// </summary>
         int? seconds;
-        /// <summary>
-        /// Handles the <see cref="E:UpdateHourSeconds" /> event.
-        /// </summary>
-        /// <param name="args">The <see cref="ChangeEventArgs"/> instance containing the event data.</param>
+
         void OnUpdateHourSeconds(ChangeEventArgs args)
         {
             var value = $"{args.Value}";
@@ -148,11 +119,6 @@ namespace Radzen.Blazor
                 await OnChange();
             }
         }
-
-        /// <summary>
-        /// Updates the hour.
-        /// </summary>
-        /// <param name="v">The v.</param>
         async Task UpdateHour(int v)
         {
             var newHour = HourFormat == "12" && CurrentDate.Hour > 12 ? v + 12 : v;
@@ -166,10 +132,6 @@ namespace Radzen.Blazor
             }
         }
 
-        /// <summary>
-        /// Updates the minutes.
-        /// </summary>
-        /// <param name="v">The v.</param>
         async Task UpdateMinutes(int v)
         {
             var newValue = new DateTime(CurrentDate.Year, CurrentDate.Month, CurrentDate.Day, CurrentDate.Hour, v, CurrentDate.Second);
@@ -181,10 +143,6 @@ namespace Radzen.Blazor
             }
         }
 
-        /// <summary>
-        /// Updates the seconds.
-        /// </summary>
-        /// <param name="v">The v.</param>
         async Task UpdateSeconds(int v)
         {
             var newValue = new DateTime(CurrentDate.Year, CurrentDate.Month, CurrentDate.Day, CurrentDate.Hour, CurrentDate.Minute, v);
@@ -196,9 +154,6 @@ namespace Radzen.Blazor
             }
         }
 
-        /// <summary>
-        /// Oks the click.
-        /// </summary>
         async Task OkClick()
         {
             if (!Disabled)
@@ -237,9 +192,6 @@ namespace Radzen.Blazor
             }
         }
 
-        /// <summary>
-        /// Class NameValue.
-        /// </summary>
         class NameValue
         {
             /// <summary>
@@ -254,17 +206,11 @@ namespace Radzen.Blazor
             public int Value { get; set; }
         }
 
-        /// <summary>
-        /// The months
-        /// </summary>
         IList<NameValue> months;
-        /// <summary>
-        /// The years
-        /// </summary>
         IList<NameValue> years;
 
         /// <summary>
-        /// Called when [initialized].
+        /// Called when initialized.
         /// </summary>
         protected override void OnInitialized()
         {
@@ -276,47 +222,37 @@ namespace Radzen.Blazor
         }
 
         /// <summary>
-        /// Gets or sets a value indicating whether [allow clear].
+        /// Gets or sets a value indicating whether value can be cleared.
         /// </summary>
-        /// <value><c>true</c> if [allow clear]; otherwise, <c>false</c>.</value>
+        /// <value><c>true</c> if value can be cleared; otherwise, <c>false</c>.</value>
         [Parameter]
         public bool AllowClear { get; set; }
 
         /// <summary>
-        /// Gets or sets the index of the tab.
+        /// Gets or sets the tab index.
         /// </summary>
-        /// <value>The index of the tab.</value>
+        /// <value>The tab index.</value>
         [Parameter]
         public int TabIndex { get; set; } = 0;
 
-        /// <summary>
-        /// The am pm
-        /// </summary>
         string amPm = "am";
 
         /// <summary>
-        /// Gets or sets the name.
+        /// Gets or sets the name of the form component.
         /// </summary>
         /// <value>The name.</value>
         [Parameter]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the input class.
+        /// Gets or sets the input CSS class.
         /// </summary>
-        /// <value>The input class.</value>
+        /// <value>The input CSS class.</value>
         [Parameter]
         public string InputClass { get; set; }
 
-        /// <summary>
-        /// The date time value
-        /// </summary>
         DateTime? _dateTimeValue;
 
-        /// <summary>
-        /// Gets or sets the date time value.
-        /// </summary>
-        /// <value>The date time value.</value>
         DateTime? DateTimeValue
         {
             get
@@ -334,17 +270,12 @@ namespace Radzen.Blazor
         }
 
         /// <summary>
-        /// Gets or sets the date render.
+        /// Gets or sets the date render callback. Use it to set attributes.
         /// </summary>
-        /// <value>The date render.</value>
+        /// <value>The date render callback.</value>
         [Parameter]
         public Action<DateRenderEventArgs> DateRender { get; set; }
 
-        /// <summary>
-        /// Dates the attributes.
-        /// </summary>
-        /// <param name="value">The value.</param>
-        /// <returns>DateRenderEventArgs.</returns>
         DateRenderEventArgs DateAttributes(DateTime value)
         {
             var args = new Radzen.DateRenderEventArgs() { Date = value, Disabled = false };
@@ -357,9 +288,6 @@ namespace Radzen.Blazor
             return args;
         }
 
-        /// <summary>
-        /// The value
-        /// </summary>
         object _value;
 
         /// <summary>
@@ -400,10 +328,7 @@ namespace Radzen.Blazor
         }
 
         DateTime _currentDate;
-        /// <summary>
-        /// Gets the current date.
-        /// </summary>
-        /// <value>The current date.</value>
+
         private DateTime CurrentDate
         {
             get
@@ -420,10 +345,6 @@ namespace Radzen.Blazor
             }
         }
 
-        /// <summary>
-        /// Gets the start date.
-        /// </summary>
-        /// <value>The start date.</value>
         private DateTime StartDate
         {
             get
@@ -435,14 +356,8 @@ namespace Radzen.Blazor
             }
         }
 
-        /// <summary>
-        /// The abbreviated day names
-        /// </summary>
         IList<string> _abbreviatedDayNames;
-        /// <summary>
-        /// Gets the abbreviated day names.
-        /// </summary>
-        /// <value>The abbreviated day names.</value>
+
         IList<string> AbbreviatedDayNames
         {
             get
@@ -466,7 +381,7 @@ namespace Radzen.Blazor
         }
 
         /// <summary>
-        /// Gets a value indicating whether this instance is bound.
+        /// Gets a value indicating whether this instance is bound (ValueChanged callback has delegate).
         /// </summary>
         /// <value><c>true</c> if this instance is bound; otherwise, <c>false</c>.</value>
         public bool IsBound
@@ -501,9 +416,6 @@ namespace Radzen.Blazor
             }
         }
 
-        /// <summary>
-        /// The form
-        /// </summary>
         IRadzenForm _form;
 
         /// <summary>
@@ -527,9 +439,6 @@ namespace Radzen.Blazor
             }
         }
 
-        /// <summary>
-        /// The input
-        /// </summary>
         protected ElementReference input;
 
         /// <summary>
@@ -591,9 +500,6 @@ namespace Radzen.Blazor
             }
         }
 
-        /// <summary>
-        /// Clears this instance.
-        /// </summary>
         async Task Clear()
         {
             Value = null;
@@ -610,37 +516,33 @@ namespace Radzen.Blazor
         }
 
         /// <summary>
-        /// Gets or sets a value indicating whether this <see cref="RadzenDatePicker{TValue}"/> is inline.
+        /// Gets or sets a value indicating whether this <see cref="RadzenDatePicker{TValue}"/> is inline - only Calender.
         /// </summary>
         /// <value><c>true</c> if inline; otherwise, <c>false</c>.</value>
         [Parameter]
         public bool Inline { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether [time only].
+        /// Gets or sets a value indicating whether time only can be set.
         /// </summary>
-        /// <value><c>true</c> if [time only]; otherwise, <c>false</c>.</value>
+        /// <value><c>true</c> if time only can be set; otherwise, <c>false</c>.</value>
         [Parameter]
         public bool TimeOnly { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether [read only].
+        /// Gets or sets a value indicating whether read only.
         /// </summary>
-        /// <value><c>true</c> if [read only]; otherwise, <c>false</c>.</value>
+        /// <value><c>true</c> if read only; otherwise, <c>false</c>.</value>
         [Parameter]
         public bool ReadOnly { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether [allow input].
+        /// Gets or sets a value indicating whether input is allowed.
         /// </summary>
-        /// <value><c>true</c> if [allow input]; otherwise, <c>false</c>.</value>
+        /// <value><c>true</c> if input is allowed; otherwise, <c>false</c>.</value>
         [Parameter]
         public bool AllowInput { get; set; } = true;
 
-        /// <summary>
-        /// Gets a value indicating whether this instance is readonly.
-        /// </summary>
-        /// <value><c>true</c> if this instance is readonly; otherwise, <c>false</c>.</value>
         private bool IsReadonly => ReadOnly || !AllowInput;
 
         /// <summary>
@@ -651,16 +553,16 @@ namespace Radzen.Blazor
         public bool Disabled { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether [show time].
+        /// Gets or sets a value indicating whether time part is shown.
         /// </summary>
-        /// <value><c>true</c> if [show time]; otherwise, <c>false</c>.</value>
+        /// <value><c>true</c> if time part is shown; otherwise, <c>false</c>.</value>
         [Parameter]
         public bool ShowTime { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether [show seconds].
+        /// Gets or sets a value indicating whether seconds are shown.
         /// </summary>
-        /// <value><c>true</c> if [show seconds]; otherwise, <c>false</c>.</value>
+        /// <value><c>true</c> if seconds are shown; otherwise, <c>false</c>.</value>
         [Parameter]
         public bool ShowSeconds { get; set; }
 
@@ -685,9 +587,6 @@ namespace Radzen.Blazor
         [Parameter]
         public string SecondsStep { get; set; }
 
-        /// <summary>
-        /// Enum StepType
-        /// </summary>
         enum StepType
         {
             /// <summary>
@@ -704,11 +603,6 @@ namespace Radzen.Blazor
             Seconds
         }
 
-        /// <summary>
-        /// Gets the step.
-        /// </summary>
-        /// <param name="type">The type.</param>
-        /// <returns>System.Double.</returns>
         double getStep(StepType type)
         {
             double step = 1;
@@ -729,21 +623,15 @@ namespace Radzen.Blazor
             return step;
         }
 
-
-        /// <summary>
-        /// Parses the step.
-        /// </summary>
-        /// <param name="step">The step.</param>
-        /// <returns>System.Double.</returns>
         double parseStep(string step)
         {
             return string.IsNullOrEmpty(step) || step == "any" ? 1 : double.Parse(step.Replace(",", "."), System.Globalization.CultureInfo.InvariantCulture);
         }
 
         /// <summary>
-        /// Gets or sets a value indicating whether [show time ok button].
+        /// Gets or sets a value indicating whether time ok button is shown.
         /// </summary>
-        /// <value><c>true</c> if [show time ok button]; otherwise, <c>false</c>.</value>
+        /// <value><c>true</c> if time ok button is shown; otherwise, <c>false</c>.</value>
         [Parameter]
         public bool ShowTimeOkButton { get; set; } = true;
 
@@ -760,10 +648,7 @@ namespace Radzen.Blazor
         /// <value>The year range.</value>
         [Parameter]
         public string YearRange { get; set; } = "1950:2050";
-        /*
-        [Parameter]
-        public string SelectionMode { get; set; } = "single";
-        */
+
         /// <summary>
         /// Gets or sets the hour format.
         /// </summary>
@@ -771,48 +656,36 @@ namespace Radzen.Blazor
         [Parameter]
         public string HourFormat { get; set; } = "24";
 
-        /*
-        [Parameter]
-        public bool Utc { get; set; } = true;
-        */
-
         /// <summary>
-        /// Gets or sets the placeholder.
+        /// Gets or sets the input placeholder.
         /// </summary>
-        /// <value>The placeholder.</value>
+        /// <value>The input placeholder.</value>
         [Parameter]
         public string Placeholder { get; set; }
 
         /// <summary>
-        /// Gets or sets the change.
+        /// Gets or sets the change callback.
         /// </summary>
-        /// <value>The change.</value>
+        /// <value>The change callback.</value>
         [Parameter]
         public EventCallback<DateTime?> Change { get; set; }
 
         /// <summary>
-        /// Gets or sets the value changed.
+        /// Gets or sets the value changed callback.
         /// </summary>
-        /// <value>The value changed.</value>
+        /// <value>The value changed callback.</value>
         [Parameter]
         public EventCallback<TValue> ValueChanged { get; set; }
 
-        /// <summary>
-        /// The content style
-        /// </summary>
         string contentStyle = "display:none;";
 
-        /// <summary>
-        /// Gets the style.
-        /// </summary>
-        /// <returns>System.String.</returns>
         private string getStyle()
         {
             return $"display: inline-block;{(Inline ? "overflow:auto;" : "")}{(Style != null ? Style : "")}";
         }
 
         /// <summary>
-        /// Closes this instance.
+        /// Closes this instance popup.
         /// </summary>
         public void Close()
         {
@@ -842,9 +715,6 @@ namespace Radzen.Blazor
             }
         }
 
-        /// <summary>
-        /// Called when [change].
-        /// </summary>
         async System.Threading.Tasks.Task OnChange()
         {
             if ((typeof(TValue) == typeof(DateTimeOffset) || typeof(TValue) == typeof(DateTimeOffset?)) && Value != null)
@@ -874,10 +744,6 @@ namespace Radzen.Blazor
                             .ToString();
         }
 
-        /// <summary>
-        /// Sets the day.
-        /// </summary>
-        /// <param name="newValue">The new value.</param>
         private async System.Threading.Tasks.Task SetDay(DateTime newValue)
         {
             if (ShowTimeOkButton)
@@ -898,10 +764,6 @@ namespace Radzen.Blazor
             }
         }
 
-        /// <summary>
-        /// Sets the month.
-        /// </summary>
-        /// <param name="month">The month.</param>
         private async System.Threading.Tasks.Task SetMonth(int month)
         {
             var currentValue = HasValue ? DateTimeValue.Value : CurrentDate;
@@ -914,10 +776,6 @@ namespace Radzen.Blazor
             }
         }
 
-        /// <summary>
-        /// Sets the year.
-        /// </summary>
-        /// <param name="year">The year.</param>
         private async System.Threading.Tasks.Task SetYear(int year)
         {
             var currentValue = HasValue ? DateTimeValue.Value : CurrentDate;
@@ -930,10 +788,6 @@ namespace Radzen.Blazor
             }
         }
 
-        /// <summary>
-        /// Gets the open popup.
-        /// </summary>
-        /// <returns>System.String.</returns>
         private string getOpenPopup()
         {
             return !Disabled && !ReadOnly && !Inline ? $"Radzen.togglePopup(this.parentNode, '{PopupID}')" : "";
@@ -988,11 +842,6 @@ namespace Radzen.Blazor
             }
         }
 
-        /// <summary>
-        /// Validations the state changed.
-        /// </summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="e">The <see cref="ValidationStateChangedEventArgs"/> instance containing the event data.</param>
         private void ValidationStateChanged(object sender, ValidationStateChangedEventArgs e)
         {
             StateHasChanged();
@@ -1039,9 +888,6 @@ namespace Radzen.Blazor
             }
         }
 
-        /// <summary>
-        /// The first render
-        /// </summary>
         private bool firstRender = true;
 
         /// <summary>
